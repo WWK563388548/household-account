@@ -1,5 +1,6 @@
 import React from 'react';
 import Ionicon from 'react-ionicons';
+import PropTypes from 'prop-types';
 
 // items are data
 // onModifyItem and onDeleteItem is function
@@ -31,7 +32,7 @@ const PriceList = ({items, onModifyItem, onDeleteItem}) => {
                         <span className="col-2">
                             {item.date}
                         </span>
-                        <a 
+                        <div
                             className="col-1"
                             onClick={() => onModifyItem(item)}
                         >   
@@ -42,8 +43,8 @@ const PriceList = ({items, onModifyItem, onDeleteItem}) => {
                                 color="#fff"
                                 icon="ios-create-outline"
                             />
-                        </a>
-                        <a 
+                        </div>
+                        <div 
                             className="col-1"
                             onClick={() => onDeleteItem(item)}
                         >
@@ -54,12 +55,17 @@ const PriceList = ({items, onModifyItem, onDeleteItem}) => {
                                 color="#fff"
                                 icon="ios-close"
                             />
-                        </a>
+                        </div>
                     </li>
                 ))
             }
         </ul>
     );
+}
+PriceList.propTypes = {
+    items: PropTypes.array.isRequired,
+    onModifyItem: PropTypes.func.isRequired,
+    onDeleteItem: PropTypes.func.isRequired,
 }
 
 export default PriceList;
