@@ -48,7 +48,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ViewTab />
+        <ViewTab 
+          activeTab="list"
+          onTabChange={(view) => {
+            console.log("check view", view);
+          }}
+        />
         <PriceList 
           items={items} 
           onModifyItem={(item) => alert(item.title)}
