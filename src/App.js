@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PriceList from './components/functional/PriceList';
+import ViewTab from './components/functional/ViewTab';
 
 // Mock data
 const items = [
@@ -47,6 +48,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <ViewTab />
         <PriceList 
           items={items} 
           onModifyItem={(item) => alert(item.title)}
