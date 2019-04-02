@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PriceList from './components/functional/priceList/PriceList';
+import PriceList from './components/functional/PriceList';
 
 // Mock data
 const items = [
