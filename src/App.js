@@ -14,6 +14,7 @@ const items = [
       "id": "1",
       "name": "旅行",
       "type": "outcome",
+      "iconName": "ios-plane"
     }
   },
   {
@@ -25,6 +26,7 @@ const items = [
       "id": "8",
       "name": "奖金",
       "type": "income",
+      "iconName": "ios-card"
     }
   },
   {
@@ -36,6 +38,7 @@ const items = [
       "id": "8",
       "name": "奖金",
       "type": "income",
+      "iconName": "ios-card"
     }
   },
 ];
