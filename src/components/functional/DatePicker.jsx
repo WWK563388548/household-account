@@ -5,9 +5,12 @@ class DatePicker extends Component {
 
     constructor(props){
         super(props);
+        const date = new Date();
         this.state = {
+            year: date.getFullYear(),
+            month: date.getMonth() + 1,
             isOpen: false,
-            selectedYear: Number(this.props.year),
+            selectedYear: date.getFullYear(),
         };
     }
 
@@ -33,6 +36,7 @@ class DatePicker extends Component {
         event.preventDefault();
         this.setState({
             selectedYear: yearNumber,
+            year: yearNumber,
         });
     }
 
@@ -40,17 +44,18 @@ class DatePicker extends Component {
         event.preventDefault();
         this.setState({
             isOpen: false,
+            month: monthNumber,
         });
 
         this.props.onChange(this.state.selectedYear, monthNumber);
     }
 
     render() {
-        const {year, month} = this.props;
-        const {isOpen, selectedYear} = this.state;
+        // const {year, month} = this.props;
+        const {isOpen, selectedYear, month, year} = this.state;
         const monthRange = this.range(12, 1);
         // console.log(monthRange);
-        const yearRange = this.range(12, -4).map(item => item + Number(year));
+        const yearRange = this.range(12, -4).map(item => item + year);
 
         return (
             <div className="dropdown date-picker-component">
@@ -59,7 +64,7 @@ class DatePicker extends Component {
                     className="btn btn-lg btn-secondary dropdown-toggle"
                     onClick={this.toggleDropdown}
                 >
-                    {`${year}年 ${month}月`}
+                    {`${year}年 ${this.padLeft(month)}月`}
                 </button>
                 {isOpen && 
                     <div className="dropdown-menu" style={{display: "block"}}>
@@ -82,7 +87,7 @@ class DatePicker extends Component {
                                         href="#" 
                                         onClick={(event) => {this.selectMonth(event, monthNumber)}}
                                         key={index} 
-                                        className={(monthNumber === Number(month)) ? "dropdown-item active" : "dropdown-item"}
+                                        className={(monthNumber === month) ? "dropdown-item active" : "dropdown-item"}
                                     >
                                         {this.padLeft(monthNumber)} 月
                                     </a>
@@ -97,8 +102,6 @@ class DatePicker extends Component {
 }
 
 DatePicker.propTypes = {
-    year: PropTypes.string.isRequired,
-    month: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
 }
 

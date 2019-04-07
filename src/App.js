@@ -50,7 +50,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <DatePicker onChange={(year, month) => {console.log(year, month)}} year={"2019"} month={"05"} />
+        <DatePicker onChange={(year, month) => {console.log(year, month)}} />
         <ViewTab 
           activeTab="list"
           onTabChange={(view) => {
