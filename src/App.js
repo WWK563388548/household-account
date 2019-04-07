@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PriceList from './components/functional/PriceList';
 import ViewTab from './components/functional/ViewTab';
+import DatePicker from './components/functional/DatePicker';
 
 // Mock data
 const items = [
@@ -45,9 +46,11 @@ const items = [
 ];
 
 class App extends Component {
+
   render() {
     return (
       <div>
+        <DatePicker year={"2019"} month={"05"} />
         <ViewTab 
           activeTab="list"
           onTabChange={(view) => {
