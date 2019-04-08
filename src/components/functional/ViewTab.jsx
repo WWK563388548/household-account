@@ -1,7 +1,7 @@
 import React from 'react';
 import Ionicon from 'react-ionicons';
 import PropTypes from 'prop-types';
-
+/* eslint-disable */
 const generateLinkClass = (current, view) => {
     return (current === view) ? 'nav-link active' : 'nav-link';
 };
