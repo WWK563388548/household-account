@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PriceList from './components/functional/PriceList';
 import ViewTab from './components/functional/ViewTab';
 import DatePicker from './components/functional/DatePicker';
+import CreateBtn from './components/functional/CreateBtn';
 
 // Mock data
 const items = [
@@ -50,6 +51,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <CreateBtn />
         <DatePicker onChange={(year, month) => {console.log(year, month)}} />
         <ViewTab 
           activeTab="list"
