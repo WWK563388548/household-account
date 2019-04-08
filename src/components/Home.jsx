@@ -4,6 +4,7 @@ import ViewTab from './functional/ViewTab';
 import DatePicker from './functional/DatePicker';
 import CreateBtn from './functional/CreateBtn';
 import DogLogo from '../static/the-doge.png';
+import TotalPrice from './functional/TotalPrice';
 
 // Mock data
 const items = [
@@ -46,27 +47,47 @@ const items = [
   ];
 
 class Home extends Component {
+
     render() {
+        let totalIncome = 0;
+        let totalOutcome = 0;
+
+        items.forEach(item => {
+            if(item.category.type === 'outcome'){
+                totalOutcome += item.price;
+            } else {
+                totalIncome += item.price;
+            }
+        });
         return (
             <div>
                 <header className="App-header">
                     <div className="row mb-5 justify-content-center">
                         <img src={DogLogo} className="App-logo" alt="logo" />
                     </div>
+                    <div className="row">
+                        <div className="col"> 
+                            <DatePicker onChange={(year, month) => {console.log(year, month)}} />
+                        </div>
+                        <div className="col">
+                            <TotalPrice income={totalIncome} outcome={totalOutcome} />
+                        </div>
+                    </div>
                 </header>
-                <DatePicker onChange={(year, month) => {console.log(year, month)}} />
-                <CreateBtn />
+                <div className="content-area py-3 px-3">
                 <ViewTab 
                     activeTab="list"
                     onTabChange={(view) => {
                         console.log("check view", view);
                     }}
                 />
+                <CreateBtn />
                 <PriceList 
                     items={items} 
                     onModifyItem={(item) => alert(item.title)}
                     onDeleteItem={(item) => alert(item.id)}
                 />
+                </div>
             </div>
         );
     }
