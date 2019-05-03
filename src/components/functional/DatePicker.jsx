@@ -59,7 +59,7 @@ class DatePicker extends Component {
 
         return (
             <div className="dropdown date-picker-component">
-                <h4>选择日期</h4>
+                <span style={{fontSize: "1.5em", marginRight: "10px"}}>选择日期</span>
                 <button 
                     className="btn btn-lg btn-secondary dropdown-toggle"
                     onClick={this.toggleDropdown}
