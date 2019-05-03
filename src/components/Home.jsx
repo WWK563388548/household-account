@@ -60,9 +60,9 @@ class Home extends Component {
             }
         });
         return (
-            <div>
+            <div className="the-background">
                 <header className="App-header">
-                    <div className="row mb-5 justify-content-center">
+                    <div className="logo-row row mb-3 justify-content-center">
                         <img src={DogLogo} className="App-logo" alt="logo" />
                     </div>
                     <div className="row">
@@ -75,18 +75,18 @@ class Home extends Component {
                     </div>
                 </header>
                 <div className="content-area py-3 px-3">
-                <ViewTab 
-                    activeTab="list"
-                    onTabChange={(view) => {
-                        console.log("check view", view);
-                    }}
-                />
-                <CreateBtn />
-                <PriceList 
-                    items={items} 
-                    onModifyItem={(item) => alert(item.title)}
-                    onDeleteItem={(item) => alert(item.id)}
-                />
+                    <ViewTab 
+                        activeTab="list"
+                        onTabChange={(view) => {
+                            console.log("check view", view);
+                        }}
+                    />
+                    <CreateBtn />
+                    <PriceList 
+                        items={items} 
+                        onModifyItem={(item) => alert(item.title)}
+                        onDeleteItem={(item) => alert(item.id)}
+                    />
                 </div>
             </div>
         );

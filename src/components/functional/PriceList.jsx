@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 // onModifyItem and onDeleteItem is function
 const PriceList = ({items, onModifyItem, onDeleteItem}) => {
     return (
-        <ul className="list-group list-group-flush">
+        <ul className="list-group list-group-flush app-list">
             {
                 items.map(item => (
                     <li 

@@ -63,6 +63,7 @@ class DatePicker extends Component {
                 <button 
                     className="btn btn-lg btn-secondary dropdown-toggle"
                     onClick={this.toggleDropdown}
+                    style={{borderColor: "#fff", backgroundColor: "#03A9F4"}}
                 >
                     {`${year}年 ${this.padLeft(month)}月`}
                 </button>
