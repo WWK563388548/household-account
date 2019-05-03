@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PriceList from './functional/PriceList';
 import ViewTab from './functional/ViewTab';
 import DatePicker from './functional/DatePicker';
@@ -88,6 +88,7 @@ class Home extends Component {
                         onDeleteItem={(item) => alert(item.id)}
                     />
                 </div>
+                <div className="footer"></div>
             </div>
         );
     }
