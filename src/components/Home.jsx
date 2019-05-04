@@ -44,6 +44,42 @@ const items = [
         "iconName": "ios-card"
       }
     },
+    {
+        "id": 4,
+        "title": "去日本旅游",
+        "price": 20000,
+        "date": "2019-04-01",
+        "category": {
+          "id": "1",
+          "name": "旅行",
+          "type": "outcome",
+          "iconName": "ios-plane"
+        }
+      },
+      {
+        "id": 5,
+        "title": "去日本旅游",
+        "price": 20000,
+        "date": "2019-04-01",
+        "category": {
+          "id": "1",
+          "name": "旅行",
+          "type": "outcome",
+          "iconName": "ios-plane"
+        }
+      },
+      {
+        "id": 6,
+        "title": "去日本旅游",
+        "price": 20000,
+        "date": "2019-04-01",
+        "category": {
+          "id": "1",
+          "name": "旅行",
+          "type": "outcome",
+          "iconName": "ios-plane"
+        }
+      },
   ];
 
 class Home extends Component {
