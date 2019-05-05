@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Ionicon from 'react-ionicons';
 
-const CreateBtn = ({ onClick }) => (
+const CreateBtn = (props) => (
   <button
     className="btn btn-primary btn-block d-flex justify-content-center align-items-center" 
     onClick={(e) => {

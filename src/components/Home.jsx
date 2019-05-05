@@ -6,6 +6,20 @@ import CreateBtn from './functional/CreateBtn';
 import DogLogo from '../static/the-doge.png';
 import TotalPrice from './functional/TotalPrice';
 
+const categories = {
+    "1" : {
+        "id": "1",
+        "name": "旅行",
+        "type": "outcome",
+        "iconName": "ios-plane"
+    },
+    "2" : {
+        "id": "8",
+        "name": "奖金",
+        "type": "income",
+        "iconName": "ios-card"
+    },
+};
 // Mock data
 const items = [
     {
@@ -13,82 +27,76 @@ const items = [
       "title": "去日本旅游",
       "price": 20000,
       "date": "2019-04-01",
-      "category": {
-        "id": "1",
-        "name": "旅行",
-        "type": "outcome",
-        "iconName": "ios-plane"
-      }
+      "cid": 1
     },
     {
       "id": 2,
       "title": "发奖金",
       "price": 80000,
       "date": "2019-03-25",
-      "category": {
-        "id": "8",
-        "name": "奖金",
-        "type": "income",
-        "iconName": "ios-card"
-      }
+      "cid": 2
     },
     {
       "id": 3,
       "title": "发奖金",
       "price": 80000,
       "date": "2019-03-25",
-      "category": {
-        "id": "8",
-        "name": "奖金",
-        "type": "income",
-        "iconName": "ios-card"
-      }
+      "cid": 2
     },
     {
         "id": 4,
         "title": "去日本旅游",
         "price": 20000,
         "date": "2019-04-01",
-        "category": {
-          "id": "1",
-          "name": "旅行",
-          "type": "outcome",
-          "iconName": "ios-plane"
-        }
+        "cid": 1
       },
       {
         "id": 5,
         "title": "去日本旅游",
         "price": 20000,
         "date": "2019-04-01",
-        "category": {
-          "id": "1",
-          "name": "旅行",
-          "type": "outcome",
-          "iconName": "ios-plane"
-        }
+        "cid": 1
       },
       {
         "id": 6,
         "title": "去日本旅游",
         "price": 20000,
         "date": "2019-04-01",
-        "category": {
-          "id": "1",
-          "name": "旅行",
-          "type": "outcome",
-          "iconName": "ios-plane"
-        }
+        "cid": 1
       },
   ];
 
 class Home extends Component {
 
+    constructor(props){
+        super(props);
+
+        this.state = {
+            items,
+            // currentDate: this.parseToYearAndMonth(),
+            tabView: "list"
+        };
+    }
+
+    parseToYearAndMonth(str) {
+        const date  = str ? new Date(str) : new Date();
+
+        return {
+            year: date.getFullYear(),
+            month: date.getMonth() + 1,
+        };
+    } 
+
     render() {
+        const {items, tabView} = this.state;
+        const itemWithCategory = items.map((item) => {
+            item.category = categories[item.cid];
+            return item;
+        });
         let totalIncome = 0;
         let totalOutcome = 0;
 
-        items.forEach(item => {
+        itemWithCategory.forEach(item => {
             if(item.category.type === 'outcome'){
                 totalOutcome += item.price;
             } else {
@@ -103,7 +111,7 @@ class Home extends Component {
                     </div>
                     <div className="row">
                         <div className="col"> 
-                            <DatePicker onChange={(year, month) => {console.log(year, month)}} />
+                            <DatePicker onChange={(year, month) => {console.log(typeof year, month)}} />
                         </div>
                         <div className="col">
                             <TotalPrice income={totalIncome} outcome={totalOutcome} />
@@ -112,14 +120,14 @@ class Home extends Component {
                 </header>
                 <div className="content-area py-3 px-3">
                     <ViewTab 
-                        activeTab="list"
+                        activeTab={tabView}
                         onTabChange={(view) => {
                             console.log("check view", view);
                         }}
                     />
                     <CreateBtn />
                     <PriceList 
-                        items={items} 
+                        items={itemWithCategory} 
                         onModifyItem={(item) => alert(item.title)}
                         onDeleteItem={(item) => alert(item.id)}
                     />
