@@ -4,10 +4,8 @@ import Ionicon from 'react-ionicons';
 
 const CreateBtn = (props) => (
   <button
-    className="btn btn-primary btn-block d-flex justify-content-center align-items-center" 
-    onClick={(e) => {
-        console.log("Click")
-    }}
+    className="btn btn-primary btn-block d-flex justify-content-center align-items-center"
+    onClick={props.onClick} 
   >
     <Ionicon
       className="rounded-circle" 

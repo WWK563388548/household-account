@@ -85,7 +85,27 @@ class Home extends Component {
             year: date.getFullYear(),
             month: date.getMonth() + 1,
         };
-    } 
+    }
+    
+    changeTabView = () => {
+
+    }
+
+    changeDate = (year, month) => {
+        console.log("change date: ", year, month)
+    }
+
+    modifyItem = () => {
+
+    }
+
+    createItem = () => {
+        console.log("create new item")
+    }
+
+    deleteItem = () => {
+
+    }
 
     render() {
         const {items, tabView} = this.state;
@@ -111,7 +131,7 @@ class Home extends Component {
                     </div>
                     <div className="row">
                         <div className="col"> 
-                            <DatePicker onChange={(year, month) => {console.log(typeof year, month)}} />
+                            <DatePicker onChange={(year, month) => this.changeDate(year, month)} />
                         </div>
                         <div className="col">
                             <TotalPrice income={totalIncome} outcome={totalOutcome} />
@@ -121,15 +141,13 @@ class Home extends Component {
                 <div className="content-area py-3 px-3">
                     <ViewTab 
                         activeTab={tabView}
-                        onTabChange={(view) => {
-                            console.log("check view", view);
-                        }}
+                        onTabChange={this.changeTabView}
                     />
-                    <CreateBtn />
+                    <CreateBtn onClick={this.createItem} />
                     <PriceList 
                         items={itemWithCategory} 
-                        onModifyItem={(item) => alert(item.title)}
-                        onDeleteItem={(item) => alert(item.id)}
+                        onModifyItem={this.modifyItem}
+                        onDeleteItem={this.deleteItem}
                     />
                 </div>
                 <div className="footer"></div>
