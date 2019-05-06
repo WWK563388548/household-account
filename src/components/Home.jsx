@@ -73,19 +73,19 @@ class Home extends Component {
 
         this.state = {
             items,
-            // currentDate: this.parseToYearAndMonth(),
+            currentDate: this.parseToYearAndMonth(),
             tabView: "list"
         };
     }
 
-    /* parseToYearAndMonth(str) {
+    parseToYearAndMonth(str) {
         const date  = str ? new Date(str) : new Date();
 
         return {
             year: date.getFullYear(),
             month: date.getMonth() + 1,
         };
-    } */
+    }
     
     changeTabView = (view) => {
         this.setState({
@@ -94,7 +94,10 @@ class Home extends Component {
     }
 
     changeDate = (year, month) => {
-        console.log("change date: ", year, month)
+        console.log("change date: ", year, month);
+        this.setState({
+            currentDate: {year, month},
+        });
     }
 
     modifyItem = () => {
@@ -112,11 +115,17 @@ class Home extends Component {
         });
     }
 
+    padLeft = (num) => {
+        return num < 10 ? '0' + num : num;
+    }
+
     render() {
-        const {items, tabView} = this.state;
+        const {items, tabView, currentDate} = this.state;
         const itemWithCategory = items.map((item) => {
             item.category = categories[item.cid];
             return item;
+        }).filter(item => {
+            return item.date.includes(`${currentDate.year}-${this.padLeft(currentDate.month)}`)
         });
         let totalIncome = 0;
         let totalOutcome = 0;
@@ -136,7 +145,11 @@ class Home extends Component {
                     </div>
                     <div className="row">
                         <div className="col"> 
-                            <DatePicker onChange={(year, month) => this.changeDate(year, month)} />
+                            <DatePicker 
+                                year={currentDate.year} 
+                                month={currentDate.month} 
+                                onChange={(year, month) => this.changeDate(year, month)} 
+                            />
                         </div>
                         <div className="col">
                             <TotalPrice income={totalIncome} outcome={totalOutcome} />

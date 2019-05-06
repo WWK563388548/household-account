@@ -5,12 +5,9 @@ class DatePicker extends Component {
 
     constructor(props){
         super(props);
-        const date = new Date();
         this.state = {
-            year: date.getFullYear(),
-            month: date.getMonth() + 1,
             isOpen: false,
-            selectedYear: date.getFullYear(),
+            selectedYear: this.props.year
         };
     }
 
@@ -36,7 +33,6 @@ class DatePicker extends Component {
         event.preventDefault();
         this.setState({
             selectedYear: yearNumber,
-            year: yearNumber,
         });
     }
 
@@ -44,15 +40,13 @@ class DatePicker extends Component {
         event.preventDefault();
         this.setState({
             isOpen: false,
-            month: monthNumber,
         });
-
         this.props.onChange(this.state.selectedYear, monthNumber);
     }
 
     render() {
-        // const {year, month} = this.props;
-        const {isOpen, selectedYear, month, year} = this.state;
+        const {year, month} = this.props;
+        const {isOpen, selectedYear} = this.state;
         const monthRange = this.range(12, 1);
         // console.log(monthRange);
         const yearRange = this.range(12, -4).map(item => item + year);
