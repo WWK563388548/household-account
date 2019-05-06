@@ -78,17 +78,19 @@ class Home extends Component {
         };
     }
 
-    parseToYearAndMonth(str) {
+    /* parseToYearAndMonth(str) {
         const date  = str ? new Date(str) : new Date();
 
         return {
             year: date.getFullYear(),
             month: date.getMonth() + 1,
         };
-    }
+    } */
     
-    changeTabView = () => {
-
+    changeTabView = (view) => {
+        this.setState({
+            tabView: view
+        });
     }
 
     changeDate = (year, month) => {
@@ -103,8 +105,11 @@ class Home extends Component {
         console.log("create new item")
     }
 
-    deleteItem = () => {
-
+    deleteItem = (deletedItem) => {
+        const filteredItems = this.state.items.filter(item => item.id !== deletedItem.id);
+        this.setState({
+            items: filteredItems,
+        });
     }
 
     render() {
@@ -144,11 +149,16 @@ class Home extends Component {
                         onTabChange={this.changeTabView}
                     />
                     <CreateBtn onClick={this.createItem} />
-                    <PriceList 
-                        items={itemWithCategory} 
-                        onModifyItem={this.modifyItem}
-                        onDeleteItem={this.deleteItem}
-                    />
+                    { tabView === "list" &&
+                        <PriceList 
+                            items={itemWithCategory} 
+                            onModifyItem={this.modifyItem}
+                            onDeleteItem={this.deleteItem}
+                        />
+                    }
+                    { tabView === "chart" &&
+                        <h1>This is Chart view</h1>
+                    }
                 </div>
                 <div className="footer"></div>
             </div>
