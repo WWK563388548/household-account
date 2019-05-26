@@ -6,7 +6,7 @@ import CreateBtn from './functional/CreateBtn';
 import DogLogo from '../static/the-doge.png';
 import TotalPrice from './functional/TotalPrice';
 
-const categories = {
+export const categories = {
     "1" : {
         "id": "1",
         "name": "旅行",
@@ -21,7 +21,7 @@ const categories = {
     },
 };
 // Mock data
-const items = [
+export const items = [
     {
       "id": 1,
       "title": "去日本旅游",
