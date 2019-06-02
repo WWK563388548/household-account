@@ -64,7 +64,7 @@ class DatePicker extends Component {
                 {isOpen && 
                     <div className="dropdown-menu" style={{display: "block"}}>
                         <div className="row">
-                            <div className="col border-right">
+                            <div className="col border-right years-range">
                                 {yearRange.map((yearNumber, index) => 
                                     <a 
                                         href="#" 
@@ -76,7 +76,7 @@ class DatePicker extends Component {
                                     </a>
                                 )}
                             </div>
-                            <div className="col">
+                            <div className="col months-range">
                                 {monthRange.map((monthNumber, index) => 
                                     <a 
                                         href="#" 
