@@ -25,4 +25,11 @@ describe('test DatePicker component', () => {
         expect(wrapper.state('isOpen')).toEqual(false);
         expect(wrapper.state('selectedYear')).toEqual(props.year);
     });
+    it('after click the button, dropdown should show, year list&month list should have the correct items', () => {
+        wrapper.find('.dropdown-toggle').simulate('click');
+        expect(wrapper.state('isOpen')).toEqual(true);
+        expect(wrapper.find('.dropdown-menu').length).toEqual(1);
+        expect(wrapper.find('.years-range .dropdown-item').length).toEqual(12);
+        expect(wrapper.find('.months-range .dropdown-item').length).toEqual(12);
+    });
 });
