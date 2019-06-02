@@ -31,5 +31,13 @@ describe('test DatePicker component', () => {
         expect(wrapper.find('.dropdown-menu').length).toEqual(1);
         expect(wrapper.find('.years-range .dropdown-item').length).toEqual(12);
         expect(wrapper.find('.months-range .dropdown-item').length).toEqual(12);
+        expect(wrapper.find('.years-range .dropdown-item.active').text())
+        .toEqual('2019 年')
+        expect(wrapper.find('.months-range .dropdown-item.active').text())
+        .toEqual('08 月')
+        expect(wrapper.find('.years-range .dropdown-item').first().text())
+        .toEqual(`${props.year - 4} 年`)
+        expect(wrapper.find('.months-range .dropdown-item').first().text())
+        .toEqual('01 月')
     });
 });
