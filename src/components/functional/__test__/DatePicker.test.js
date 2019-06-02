@@ -40,4 +40,14 @@ describe('test DatePicker component', () => {
         expect(wrapper.find('.months-range .dropdown-item').first().text())
         .toEqual('01 月')
     });
+    it('click the year & month item, should trigger the right status change', () => {
+        wrapper.find('.dropdown-toggle').simulate('click')
+        wrapper.find('.years-range .dropdown-item').first().simulate('click')
+        expect(wrapper.find('.years-range .dropdown-item').first().hasClass('active'))
+        .toEqual(true)
+        expect(wrapper.state('selectedYear')).toEqual(2015)
+        wrapper.find('.months-range .dropdown-item').first().simulate('click')
+        expect(wrapper.state('isOpen')).toEqual(false)
+        expect(props.onChange).toHaveBeenCalledWith(2015, 1)
+      });
 });
