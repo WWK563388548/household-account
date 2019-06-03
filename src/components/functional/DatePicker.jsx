@@ -71,11 +71,13 @@ class DatePicker extends Component {
         const yearRange = this.range(12, -4).map(item => item + year);
 
         return (
-            <div className="dropdown date-picker-component">
+            <div 
+            style={{width: "60%"}}
+            className="dropdown date-picker-component" 
+            // 使用ref获取dom节点
+            ref={(ref) => this.node = ref} >
                 <span style={{fontSize: "1.5em", marginRight: "10px"}}>选择日期</span>
                 <button
-                    // 使用ref获取dom节点
-                    ref={(ref) => this.node = ref} 
                     className="btn btn-lg btn-secondary dropdown-toggle"
                     onClick={this.toggleDropdown}
                     style={{borderColor: "#fff", backgroundColor: "#03A9F4"}}
