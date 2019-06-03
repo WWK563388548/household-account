@@ -11,6 +11,25 @@ class DatePicker extends Component {
         };
     }
 
+    componentDidMount(){
+        // false是冒泡(默认), true是capture
+        document.addEventListener('click', this.handleClick, false);
+    }
+
+    componentWillUnmount(){
+        // 组件Unmount时移除listener
+        document.removeEventListener('click', this.handleClick, false);
+    }
+
+    handleClick = (event) => {
+        if(this.node.contains(event.target)){
+            return;
+        }
+        this.setState({
+            isOpen: false,
+        });
+    }
+
     range = (size, startAt) => {
         const arr = [];
         for (let i = 0; i < size; i++){
@@ -54,7 +73,9 @@ class DatePicker extends Component {
         return (
             <div className="dropdown date-picker-component">
                 <span style={{fontSize: "1.5em", marginRight: "10px"}}>选择日期</span>
-                <button 
+                <button
+                    // 使用ref获取dom节点
+                    ref={(ref) => this.node = ref} 
                     className="btn btn-lg btn-secondary dropdown-toggle"
                     onClick={this.toggleDropdown}
                     style={{borderColor: "#fff", backgroundColor: "#03A9F4"}}
