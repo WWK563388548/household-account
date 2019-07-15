@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme'; // 用于测试展示型组件(只有props传入的值, 而没有state的组件)
 import PriceList from '../PriceList';
-import { items, categories } from '../../Home';
+import { items, categories } from '../Home';
 import Ionicon from 'react-ionicons';
 
 const itemWithCategory = items.map((item) => {

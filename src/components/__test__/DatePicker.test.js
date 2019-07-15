@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import DatePicker from '../DatePicker';
-import { items } from '../../Home';
+import { items } from '../Home';
 import ReactDOM from 'react-dom'
 
 let props = {

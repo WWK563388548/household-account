@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import PriceList from './functional/PriceList';
-import ViewTab from './functional/ViewTab';
-import DatePicker from './functional/DatePicker';
-import CreateBtn from './functional/CreateBtn';
+import PriceList from './PriceList';
+import ViewTab from './ViewTab';
+import DatePicker from './DatePicker';
+import CreateBtn from './CreateBtn';
 import DogLogo from '../static/the-doge.png';
-import TotalPrice from './functional/TotalPrice';
+import TotalPrice from './TotalPrice';
 
 export const categories = {
     "1" : {
