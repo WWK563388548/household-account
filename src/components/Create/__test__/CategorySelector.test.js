@@ -28,3 +28,15 @@ let props = {
     categories,
     onSelectCategory: jest.fn(),
 };
+
+describe('Test CategorySelect componet', () => {
+    it('renders with categories should render the correct items', () => {
+        const wrapper = mount(<CategorySelector {...props} />);
+        expect(wrapper.find('.category-item').length).toEqual(categories.length);
+        expect(wrapper.find('.category-item.active').length).toEqual(0);
+        
+        const firstIcon = wrapper.find('.category-item').first().find(Ionicon);
+        expect(firstIcon.length).toEqual(1);
+        expect(firstIcon.props().icon).toEqual(categories[0].iconName);
+    });
+});
