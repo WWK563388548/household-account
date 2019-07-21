@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
@@ -10,10 +10,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Fragment>
+        <div className="container pb-5">
           <Route path="/" exact component={Home} />
           <Route path="/create" component={Create} />
-        </Fragment>
+        </div>
       </Router>
     );
   }
